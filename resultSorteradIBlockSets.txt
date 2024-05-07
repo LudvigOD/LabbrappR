@@ -1,8 +1,0 @@
-Time taken for TreeSet addAll  8.0530637E8 nanoseconds
-Time taken for HashSet addAll 1.61061274E9 nanoseconds
-Time taken for TreeSet contains 2.68435456E8 nanoseconds
-Time taken for HashSet contains 0.0 nanoseconds
-Time taken for TreeSet remove  1.07374182E9 nanoseconds
-Time taken for HashSet remove  5.3687091E8 nanoseconds
-Time taken for TreeSet size  0.0 nanoseconds
-Time taken for HashSet size  0.0 nanoseconds
