@@ -1,0 +1,12 @@
+Time taken for LinkedList addAll 4.9928995E10 nanoseconds
+Time taken for ArrayList addAll 4.0265318E10 nanoseconds
+Time taken for LinkedList sort 8.0530637E8 nanoseconds
+Time taken for ArrayList sort  0.0 nanoseconds
+Time taken for LinkedList contains 2.36223201E10 nanoseconds
+Time taken for ArrayList contains  9.395241E9 nanoseconds
+Time taken for LinkedList get  4.5634028E9 nanoseconds
+Time taken for ArrayList get  0.0 nanoseconds
+Time taken for LinkedList remove 2.68435456E8 nanoseconds
+Time taken for ArrayList remove  6.5229816E10 nanoseconds
+Time taken for LinkedList size 0.0 nanoseconds
+Time taken for ArrayList size 2.68435456E8 nanoseconds

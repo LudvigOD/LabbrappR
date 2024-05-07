@@ -17,9 +17,9 @@ public class TestSet {
     }
 
     public void testSets(){
-        Creator osorteradIBlock = new Creator("/Users/rossottosson/Bjorn/RKursen/Projekt/Banan/Osorterad_I_Block.txt", "resultOsorteradIBlockSets");
-        Creator sorteradHundraTal = new Creator("/Users/rossottosson/Bjorn/RKursen/Projekt/Banan/Sorterad_I_Block.txt", "resultSorteradIBlockSets");
-        Creator osorterad = new Creator("/Users/rossottosson/Bjorn/RKursen/Projekt/Banan/Osorterad.txt", "resultOsorteradSets");
+        Creator osorteradIBlock = new Creator("Osorterad_I_Block.txt", "resultOsorteradIBlockSets");
+        Creator sorteradHundraTal = new Creator("Sorterad_I_Block.txt", "resultSorteradIBlockSets");
+        Creator osorterad = new Creator("Banan/Osorterad.txt", "resultOsorteradSets");
 
         runAndWriteTestResults(osorteradIBlock);
         runAndWriteTestResults(sorteradHundraTal);
@@ -88,13 +88,10 @@ public class TestSet {
             hashSet.clear();
         }
 
-        // Calculate average time
-        float avgLinkedListTime = totalLinkedListTime;
-        float avgArrayListTime = totalArrayListTime;
 
         float[] result = new float[2];
-        result[0] = avgLinkedListTime;
-        result[1] = avgArrayListTime;
+        result[0] = totalLinkedListTime;
+        result[1] = totalArrayListTime;
         return result;
     }
 
@@ -130,13 +127,9 @@ public class TestSet {
             totalArrayListTime += (System.nanoTime() - t0_2);
         }
 
-        // Calculate average time
-        float avgLinkedListTime = totalLinkedListTime;
-        float avgArrayListTime = totalArrayListTime;
-
         float[] result = new float[2];
-        result[0] = avgLinkedListTime;
-        result[1] = avgArrayListTime;
+        result[0] = totalLinkedListTime;
+        result[1] = totalArrayListTime;
         return result;
     }
 
@@ -167,13 +160,10 @@ public class TestSet {
             totalHashSetTime += (System.nanoTime() - t0_2);
         }
 
-        // Calculate average time
-        float avgLinkedListTime = totalTreeSetTime;
-        float avgArrayListTime = totalHashSetTime;
 
         float[] result = new float[2];
-        result[0] = avgLinkedListTime;
-        result[1] = avgArrayListTime;
+        result[0] = totalTreeSetTime;
+        result[1] = totalHashSetTime;
         return result;
     }
 
@@ -188,8 +178,8 @@ public class TestSet {
             hashSet.add(numb);
         }
 
-        float totalLinkedListTime = 0;
-        float totalArrayListTime = 0;
+        float totalTreeSetTime = 0;
+        float totalHashSetTime = 0;
 
         for (int iter = 0; iter < iterations; iter++) {
             TreeSet<Integer> copyTreeSet = new TreeSet<>(treeSet);
@@ -199,23 +189,19 @@ public class TestSet {
             for (int i = 0; i < 10000; i++) {
                 copyTreeSet.remove(c.theInts[i]);
             }
-            totalLinkedListTime += (System.nanoTime() - t0);
+            totalTreeSetTime += (System.nanoTime() - t0);
 
             // Measure time for ArrayList remove
             float t0_2 = System.nanoTime();
             for (int i = 0; i < 10000; i++) {
                 copyHashSet.remove(c.theInts[i]);
             }
-            totalArrayListTime += (System.nanoTime() - t0_2);
+            totalHashSetTime += (System.nanoTime() - t0_2);
         }
 
-        // Calculate average time
-        float avgLinkedListTime = totalLinkedListTime;
-        float avgArrayListTime = totalArrayListTime;
-
         float[] result = new float[2];
-        result[0] = avgLinkedListTime;
-        result[1] = avgArrayListTime;
+        result[0] = totalTreeSetTime;
+        result[1] = totalHashSetTime;
         return result;
     }
 }

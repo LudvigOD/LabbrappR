@@ -17,9 +17,9 @@ public class TestList {
     }
 
     public void testLists(){
-        Creator osorteradIBlock = new Creator("/Users/rossottosson/Bjorn/RKursen/Projekt/Banan/Osorterad_I_Block.txt", "resultOsorteradIBlock");
-        Creator sorteradHundraTal = new Creator("/Users/rossottosson/Bjorn/RKursen/Projekt/Banan/Sorterad_I_Block.txt", "resultSorteradIBlock");
-        Creator osorterad = new Creator("/Users/rossottosson/Bjorn/RKursen/Projekt/Banan/Osorterad.txt", "resultOsorterad");
+        Creator osorteradIBlock = new Creator("Banan/Osorterad_I_Block.txt", "resultOsorteradIBlock");
+        Creator sorteradHundraTal = new Creator("Banan/Sorterad_I_Block.txt", "resultSorteradIBlock");
+        Creator osorterad = new Creator("Banan/Osorterad.txt", "resultOsorterad");
 
         runAndWriteTestResults(osorteradIBlock);
         runAndWriteTestResults(sorteradHundraTal);
@@ -101,13 +101,11 @@ public class TestList {
         arrayList.clear();
     }
 
-    // Calculate average time
-    float avgLinkedListTime = totalLinkedListTime;
-    float avgArrayListTime = totalArrayListTime;
+   
 
     float[] result = new float[2];
-    result[0] = avgLinkedListTime;
-    result[1] = avgArrayListTime;
+    result[0] = totalLinkedListTime;
+    result[1] = totalArrayListTime;
     return result;
 }
 
@@ -139,16 +137,14 @@ public float[] timeSort(Creator c, int iterations) {
         copyArrayList.sort((e1, e2) -> e1 - e2);
         totalArrayListTime += (System.nanoTime() - t0_2);
 
-        // Clear lists for the next iteration
+        
     }
 
-    // Calculate average time
-    float avgLinkedListTime = totalLinkedListTime;
-    float avgArrayListTime = totalArrayListTime;
+    
 
     float[] result = new float[2];
-    result[0] = avgLinkedListTime;
-    result[1] = avgArrayListTime;
+    result[0] = totalLinkedListTime;
+    result[1] = totalArrayListTime;
     return result;
 }
 
@@ -185,13 +181,9 @@ public float[] timeSort(Creator c, int iterations) {
         totalArrayListTime += (System.nanoTime() - t0_2);
     }
 
-    // Calculate average time
-    float avgLinkedListTime = totalLinkedListTime;
-    float avgArrayListTime = totalArrayListTime;
-
     float[] result = new float[2];
-    result[0] = avgLinkedListTime;
-    result[1] = avgArrayListTime;
+    result[0] = totalLinkedListTime;
+    result[1] = totalArrayListTime;
     return result;
     }
 
@@ -227,12 +219,11 @@ public float[] timeSort(Creator c, int iterations) {
         }
 
         // Calculate average time
-        float avgLinkedListTime = totalLinkedListTime;
-        float avgArrayListTime = totalArrayListTime;
+        
 
         float[] result = new float[2];
-        result[0] = avgLinkedListTime;
-        result[1] = avgArrayListTime;
+        result[0] = totalLinkedListTime;
+        result[1] = totalArrayListTime;
         return result;
     }
 
@@ -268,13 +259,11 @@ public float[] timeSort(Creator c, int iterations) {
             totalArrayListTime += (System.nanoTime() - t0_2);
         }
 
-        // Calculate average time
-        float avgLinkedListTime = totalLinkedListTime;
-        float avgArrayListTime = totalArrayListTime;
+        
 
         float[] result = new float[2];
-        result[0] = avgLinkedListTime;
-        result[1] = avgArrayListTime;
+        result[0] = totalLinkedListTime;
+        result[1] = totalArrayListTime;
         return result;
     }
 
@@ -303,13 +292,11 @@ public float[] timeSort(Creator c, int iterations) {
             totalArrayListTime += (System.nanoTime() - t0_2);
         }
 
-        // Calculate average time
-        float avgLinkedListTime = totalLinkedListTime;
-        float avgArrayListTime = totalArrayListTime;
+       
 
         float[] result = new float[2];
-        result[0] = avgLinkedListTime;
-        result[1] = avgArrayListTime;
+        result[0] = totalLinkedListTime;
+        result[1] = totalArrayListTime;
         return result;
     }
 
