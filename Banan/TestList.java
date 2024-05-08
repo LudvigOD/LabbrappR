@@ -30,39 +30,39 @@ public class TestList {
             BufferedWriter writer = new BufferedWriter(new FileWriter(c.outPutName + ".txt"));
 
             
-            float[] result1 = timeAddAll(c, reps*100);
+            double[] result1 = timeAddAll(c, reps);
             writer.write("Time taken for LinkedList addAll "  + result1[0] + " nanoseconds");
             writer.newLine();
             writer.write("Time taken for ArrayList addAll " + result1[1] + " nanoseconds");
             writer.newLine();
 
             
-            float[] result2 = timeSort(c, reps);
+            double[] result2 = timeSort(c, reps);
             writer.write("Time taken for LinkedList sort " + result2[0] + " nanoseconds");
             writer.newLine();
             writer.write("Time taken for ArrayList sort  " + result2[1] + " nanoseconds");
             writer.newLine();
 
-            float[] result3 = timeContains(c, reps*100);
+            double[] result3 = timeContains(c, reps);
             writer.write("Time taken for LinkedList contains " + result3[0] + " nanoseconds");
             writer.newLine();
             writer.write("Time taken for ArrayList contains  " + result3[1] + " nanoseconds");
             writer.newLine();
 
-            float[] result4 = timeGet(c, reps*100);
+            double[] result4 = timeGet(c, reps);
             writer.write("Time taken for LinkedList get  " + result4[0] + " nanoseconds");
             writer.newLine();
             writer.write("Time taken for ArrayList get  " + result4[1] + " nanoseconds");
             writer.newLine(); 
 
             
-            float[] result5 = timeRemove(c, reps);
+            double[] result5 = timeRemove(c, reps);
             writer.write("Time taken for LinkedList remove " + result5[0] + " nanoseconds");
             writer.newLine();
             writer.write("Time taken for ArrayList remove  " + result5[1] + " nanoseconds");
             writer.newLine();
 
-            float[] result7 = timeSize(c, reps*100);
+            double[] result7 = timeSize(c, reps);
             writer.write("Time taken for LinkedList size " + result7[0] + " nanoseconds");
             writer.newLine();
             writer.write("Time taken for ArrayList size " + result7[1] + " nanoseconds");
@@ -75,13 +75,13 @@ public class TestList {
     }
 
 
-  public float[] timeAddAll(Creator c, int iterations) {
+  public double[] timeAddAll(Creator c, int iterations) {
     List<Integer> linkedList = new LinkedList<>();
     List<Integer> arrayList = new ArrayList<>();
 
-    float totalLinkedListTime;
-    float totalArrayListTime;
-    float t0 = System.nanoTime();
+    double totalLinkedListTime;
+    double totalArrayListTime;
+    double t0 = System.nanoTime();
     for (int iter = 0; iter < iterations; iter++) {
         for (int numb : c.theInts) {
             linkedList.add(numb);
@@ -90,7 +90,7 @@ public class TestList {
         
     }
     totalLinkedListTime = (System.nanoTime() - t0);
-    float t0_2 = System.nanoTime();
+    double t0_2 = System.nanoTime();
     for(int iter = 0; iter < iterations; iter++){
         for (int numb : c.theInts) {
             arrayList.add(numb);
@@ -101,13 +101,13 @@ public class TestList {
 
    
 
-    float[] result = new float[2];
+    double[] result = new double[2];
     result[0] = totalLinkedListTime;
     result[1] = totalArrayListTime;
     return result;
 }
 
-public float[] timeSort(Creator c, int iterations) {
+public double[] timeSort(Creator c, int iterations) {
     List<Integer> linkedList = new LinkedList<>();
     List<Integer> arrayList = new ArrayList<>();
 
@@ -118,17 +118,18 @@ public float[] timeSort(Creator c, int iterations) {
             arrayList.add(numb);
     }
 
-    float totalLinkedListTime;
-    float totalArrayListTime;
+    double totalLinkedListTime;
+    double totalArrayListTime;
 
-    float t0 = System.nanoTime();
+    double t0 = System.nanoTime();
     for (int iter = 0; iter < iterations; iter++) {
         List<Integer> copyLinkedList = new LinkedList<>(linkedList);
         copyLinkedList.sort((e1, e2) -> e1 - e2);
     }
     totalLinkedListTime = (System.nanoTime() - t0);
 
-    float t0_2 = System.nanoTime();
+
+    double t0_2 = System.nanoTime();
     for (int iter = 0; iter < iterations; iter++){
         List<Integer> copyArrayList = new ArrayList<>(arrayList);
         copyArrayList.sort((e1, e2) -> e1 - e2);
@@ -136,14 +137,14 @@ public float[] timeSort(Creator c, int iterations) {
     }
     totalArrayListTime = (System.nanoTime() - t0_2);
 
-    float[] result = new float[2];
+    double[] result = new double[2];
     result[0] = totalLinkedListTime;
     result[1] = totalArrayListTime;
     return result;
 }
 
 
-    public float[] timeContains(Creator c, int iterations) {
+    public double[] timeContains(Creator c, int iterations) {
     List<Integer> linkedList = new LinkedList<>();
     List<Integer> arrayList = new ArrayList<>();
 
@@ -154,32 +155,32 @@ public float[] timeSort(Creator c, int iterations) {
         arrayList.add(numb);
     }
 
-    Random rand = new Random();
-    int r;
+    double totalLinkedListTime;
+    double totalArrayListTime;
 
-    float totalLinkedListTime;
-    float totalArrayListTime;
-
-    float t0 = System.nanoTime();
+    double t0 = System.nanoTime();
+  
     for (int iter = 0; iter < iterations; iter++){
-        r = rand.nextInt(9999) + 1;
         linkedList.contains(c.theInts[iter]);
     }
+
     totalLinkedListTime = (System.nanoTime() - t0);
 
-    float t0_2 = System.nanoTime();
+    double t0_2 = System.nanoTime();
+  
     for (int iter = 0; iter < iterations; iter++){
-         arrayList.contains(c.theInts[iter]); 
-        }
+        arrayList.contains(c.theInts[iter]); 
+    }
+    
     totalArrayListTime = (System.nanoTime() - t0_2);
 
-    float[] result = new float[2];
+    double[] result = new double[2];
     result[0] = totalLinkedListTime;
     result[1] = totalArrayListTime;
     return result;
     } 
 
-    public float[] timeGet(Creator c, int iterations) {
+    public double[] timeGet(Creator c, int iterations) {
         List<Integer> linkedList = new LinkedList<>();
         List<Integer> arrayList = new ArrayList<>();
 
@@ -190,29 +191,32 @@ public float[] timeSort(Creator c, int iterations) {
             arrayList.add(numb);
         }
 
-        float totalLinkedListTime;
-        float totalArrayListTime;
+        double totalLinkedListTime;
+        double totalArrayListTime;
 
-        float t0 = System.nanoTime();
+        double t0 = System.nanoTime();
+        
         for (int iter = 0; iter < iterations; iter++) {
-            linkedList.get(c.theInts[iter]);
+            linkedList.get(c.theInts[iter] - 1);
         }
+       
         totalLinkedListTime = (System.nanoTime() - t0);
 
-        float t0_2 = System.nanoTime();
+        double t0_2 = System.nanoTime();
         for (int iter = 0; iter < iterations; iter++){
-            arrayList.get(c.theInts[iter]);   
+            arrayList.get(c.theInts[iter] - 1);   
         }
+        
         totalArrayListTime = (System.nanoTime() - t0_2);
         
 
-        float[] result = new float[2];
+        double[] result = new double[2];
         result[0] = totalLinkedListTime;
         result[1] = totalArrayListTime;
         return result;
     } 
 
-    public float[] timeRemove(Creator c, int iterations) {
+    public double[] timeRemove(Creator c, int iterations) {
         List<Integer> linkedList = new LinkedList<>();
         List<Integer> arrayList = new ArrayList<>();
 
@@ -223,10 +227,10 @@ public float[] timeSort(Creator c, int iterations) {
             arrayList.add(numb);
         }
 
-        float totalLinkedListTime;
-        float totalArrayListTime;
+        double totalLinkedListTime;
+        double totalArrayListTime;
 
-        float t0 = System.nanoTime();
+        double t0 = System.nanoTime();
         for (int iter = 0; iter < iterations; iter++) {
             List<Integer> copyLinkedList = new LinkedList<>(linkedList);
             for (int i = 0; i < 10000; i++) {
@@ -236,7 +240,7 @@ public float[] timeSort(Creator c, int iterations) {
         }
         totalLinkedListTime = (System.nanoTime() - t0);
 
-        float t0_2 = System.nanoTime();
+        double t0_2 = System.nanoTime();
         for (int iter = 0; iter < iterations; iter++) {
             List<Integer> copyArrayList = new ArrayList<>(arrayList);
             for (int i = 0; i < 10000; i++) {
@@ -245,13 +249,13 @@ public float[] timeSort(Creator c, int iterations) {
         }
         totalArrayListTime = (System.nanoTime() - t0_2);
 
-        float[] result = new float[2];
+        double[] result = new double[2];
         result[0] = totalLinkedListTime;
         result[1] = totalArrayListTime;
         return result;
     }
 
-    public float[] timeSize(Creator c, int iterations) {
+    public double[] timeSize(Creator c, int iterations) {
         List<Integer> linkedList = new LinkedList<>();
         List<Integer> arrayList = new ArrayList<>();
 
@@ -261,16 +265,21 @@ public float[] timeSort(Creator c, int iterations) {
         for (int numb : c.theInts) {
             arrayList.add(numb);
         }
-        float totalLinkedListTime;
-        float totalArrayListTime;
+        double totalLinkedListTime;
+        double totalArrayListTime;
 
-        float t0 = System.nanoTime();
+        double t0 = System.nanoTime();
+
+       
         for (int iter = 0; iter < iterations; iter++){
             int hej = linkedList.size();    
         }   
+
+    
         totalLinkedListTime = (System.nanoTime() - t0);
 
-        float t0_2 = System.nanoTime(); 
+        double t0_2 = System.nanoTime(); 
+
         for (int iter = 0; iter < iterations; iter++){
             int tja = arrayList.size();
         }
@@ -278,7 +287,7 @@ public float[] timeSort(Creator c, int iterations) {
 
        
 
-        float[] result = new float[2];
+        double[] result = new double[2];
         result[0] = totalLinkedListTime;
         result[1] = totalArrayListTime;
         return result;

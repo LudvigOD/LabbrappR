@@ -29,25 +29,25 @@ public class TestSet {
         try{
             BufferedWriter writer = new BufferedWriter(new FileWriter(c.outPutName + ".txt"));
 
-            float[] result1 = timeAddAll(c, reps);
+            double[] result1 = timeAddAll(c, reps);
             writer.write("Time taken for TreeSet addAll  " + result1[0] + " nanoseconds");
             writer.newLine();
             writer.write("Time taken for HashSet addAll " + result1[1] + " nanoseconds");
             writer.newLine();
 
-            float[] result3 = timeContains(c, reps*100);
+            double[] result3 = timeContains(c, reps);
             writer.write("Time taken for TreeSet contains " + result3[0] + " nanoseconds");
             writer.newLine();
             writer.write("Time taken for HashSet contains " + result3[1] + " nanoseconds");
             writer.newLine();
 
-            float[] result5 = timeRemove(c, reps);
+            double[] result5 = timeRemove(c, reps);
             writer.write("Time taken for TreeSet remove  " + result5[0] + " nanoseconds");
             writer.newLine();
             writer.write("Time taken for HashSet remove  " + result5[1] + " nanoseconds");
             writer.newLine();
 
-            float[] result7 = timeSize(c, reps*100);
+            double[] result7 = timeSize(c, reps);
             writer.write("Time taken for TreeSet size  " + result7[0] + " nanoseconds");
             writer.newLine();
             writer.write("Time taken for HashSet size  " + result7[1] + " nanoseconds");
@@ -60,14 +60,14 @@ public class TestSet {
     }
 
 
-    public float[] timeAddAll(Creator c, int iterations) {
+    public double[] timeAddAll(Creator c, int iterations) {
         TreeSet<Integer> treeSet = new TreeSet<>();
         HashSet<Integer> hashSet = new HashSet<>();
 
-        float totalTreeSetTime;
-        float totalHashSetTime;
+        double totalTreeSetTime;
+        double totalHashSetTime;
 
-        float t0 = System.nanoTime();
+        double t0 = System.nanoTime();
         for (int iter = 0; iter < iterations; iter++) {
             for (int numb : c.theInts) {
                 treeSet.add(numb);
@@ -76,7 +76,7 @@ public class TestSet {
         }
         totalTreeSetTime = (System.nanoTime() - t0);
 
-        float t0_2 = System.nanoTime();
+        double t0_2 = System.nanoTime();
         for (int iter = 0; iter < iterations; iter++){
             
             for (int numb : c.theInts) {
@@ -91,7 +91,7 @@ public class TestSet {
 
 
 
-        float[] result = new float[2];
+        double[] result = new double[2];
         result[0] = totalTreeSetTime;
         result[1] = totalHashSetTime;
         return result;
@@ -99,7 +99,7 @@ public class TestSet {
 
 
 
-    public float[] timeContains(Creator c, int iterations) {
+    public double[] timeContains(Creator c, int iterations) {
         TreeSet<Integer> treeSet = new TreeSet<>();
         HashSet<Integer> hashSet = new HashSet<>();
 
@@ -112,29 +112,31 @@ public class TestSet {
 
 
 
-        float totalTreeSetTime;
-        float totalHashSetTime;
+        double totalTreeSetTime;
+        double totalHashSetTime;
 
-        float t0 = System.nanoTime();
+        double t0 = System.nanoTime();
         for (int iter = 0; iter < iterations; iter++) {
             treeSet.contains(c.theInts[iter]);
         }
+       
         totalTreeSetTime = (System.nanoTime() - t0);
 
-        float t0_2 = System.nanoTime();
+        double t0_2 = System.nanoTime();
         for (int iter = 0; iter < iterations; iter++) {
             hashSet.contains(c.theInts[iter]);
         }
+       
         totalHashSetTime = (System.nanoTime() - t0_2);
 
-        float[] result = new float[2];
+        double[] result = new double[2];
         result[0] = totalTreeSetTime;
         result[1] = totalHashSetTime;
         return result;
     }
 
 
-    public float[] timeSize(Creator c, int iterations) {
+    public double[] timeSize(Creator c, int iterations) {
         TreeSet<Integer> treeSet = new TreeSet<>();
         HashSet<Integer> hashSet = new HashSet<>();
 
@@ -145,29 +147,29 @@ public class TestSet {
             hashSet.add(numb);
         }
 
-        float totalTreeSetTime;
-        float totalHashSetTime;
+        double totalTreeSetTime;
+        double totalHashSetTime;
 
-        float t0 = System.nanoTime();
+        double t0 = System.nanoTime();
         for (int iter = 0; iter < iterations; iter++) {
             int hej = treeSet.size();
         }
         totalTreeSetTime = (System.nanoTime() - t0);
 
-        float t0_2 = System.nanoTime();
+        double t0_2 = System.nanoTime();
         for (int iter = 0; iter < iterations; iter++) {
             int tja = hashSet.size();
         }
         totalHashSetTime = (System.nanoTime() - t0_2);
 
 
-        float[] result = new float[2];
+        double[] result = new double[2];
         result[0] = totalTreeSetTime;
         result[1] = totalHashSetTime;
         return result;
     }
 
-    public float[] timeRemove(Creator c, int iterations) {
+    public double[] timeRemove(Creator c, int iterations) {
         TreeSet<Integer> treeSet = new TreeSet<>();
         HashSet<Integer> hashSet = new HashSet<>();
 
@@ -178,10 +180,10 @@ public class TestSet {
             hashSet.add(numb);
         }
 
-        float totalTreeSetTime;
-        float totalHashSetTime;
+        double totalTreeSetTime;
+        double totalHashSetTime;
 
-        float t0 = System.nanoTime();
+        double t0 = System.nanoTime();
         for (int iter = 0; iter < iterations; iter++) {
             TreeSet<Integer> copyTreeSet = new TreeSet<>(treeSet);
             for (int i = 0; i < 10000; i++) {
@@ -190,7 +192,7 @@ public class TestSet {
         }
         totalTreeSetTime = (System.nanoTime() - t0);
 
-        float t0_2 = System.nanoTime();
+        double t0_2 = System.nanoTime();
         for (int iter = 0; iter < iterations; iter++) {
             HashSet<Integer> copyHashSet = new HashSet<>(hashSet);
             for (int i = 0; i < 10000; i++) {
@@ -199,7 +201,7 @@ public class TestSet {
         }
         totalHashSetTime = (System.nanoTime() - t0_2);
 
-        float[] result = new float[2];
+        double[] result = new double[2];
         result[0] = totalTreeSetTime;
         result[1] = totalHashSetTime;
         return result;
