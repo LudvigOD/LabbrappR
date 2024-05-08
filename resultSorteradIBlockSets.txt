@@ -1,0 +1,10 @@
+TreeSet 
+timeAddAll 8.509697917E9
+timeContains 1046292.0
+timeRemove 9.781904917E9
+timeSize 141000.0
+HashSet 
+timeAddAll 8.5085875E8
+timeContains 858750.0
+timeRemove 1.58622725E9
+timeSize 124166.0

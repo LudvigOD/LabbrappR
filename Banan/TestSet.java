@@ -28,30 +28,32 @@ public class TestSet {
     private void runAndWriteTestResults(Creator c){
         try{
             BufferedWriter writer = new BufferedWriter(new FileWriter(c.outPutName + ".txt"));
-
             double[] result1 = timeAddAll(c, reps);
-            writer.write("Time taken for TreeSet addAll  " + result1[0] + " nanoseconds");
-            writer.newLine();
-            writer.write("Time taken for HashSet addAll " + result1[1] + " nanoseconds");
-            writer.newLine();
-
             double[] result3 = timeContains(c, reps);
-            writer.write("Time taken for TreeSet contains " + result3[0] + " nanoseconds");
-            writer.newLine();
-            writer.write("Time taken for HashSet contains " + result3[1] + " nanoseconds");
-            writer.newLine();
-
             double[] result5 = timeRemove(c, reps);
-            writer.write("Time taken for TreeSet remove  " + result5[0] + " nanoseconds");
-            writer.newLine();
-            writer.write("Time taken for HashSet remove  " + result5[1] + " nanoseconds");
-            writer.newLine();
-
             double[] result7 = timeSize(c, reps);
-            writer.write("Time taken for TreeSet size  " + result7[0] + " nanoseconds");
+
+            writer.write("TreeSet ");
             writer.newLine();
-            writer.write("Time taken for HashSet size  " + result7[1] + " nanoseconds");
+            writer.write("timeAddAll " + result1[0]); 
             writer.newLine();
+            writer.write("timeContains " + result3[0]);
+            writer.newLine();
+            writer.write("timeRemove " + result5[0]);
+            writer.newLine();
+            writer.write("timeSize " + result7[0]);
+
+            writer.newLine();
+            writer.write("HashSet ");
+            writer.newLine();
+            writer.write("timeAddAll " + result1[1]); 
+            writer.newLine();
+            writer.write("timeContains " + result3[1]);
+            writer.newLine();
+            writer.write("timeRemove " + result5[1]);
+            writer.newLine();
+            writer.write("timeSize " + result7[1]);
+    
 
             writer.close();
         } catch (IOException e) {

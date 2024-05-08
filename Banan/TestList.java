@@ -31,42 +31,41 @@ public class TestList {
 
             
             double[] result1 = timeAddAll(c, reps);
-            writer.write("Time taken for LinkedList addAll "  + result1[0] + " nanoseconds");
-            writer.newLine();
-            writer.write("Time taken for ArrayList addAll " + result1[1] + " nanoseconds");
-            writer.newLine();
-
-            
             double[] result2 = timeSort(c, reps);
-            writer.write("Time taken for LinkedList sort " + result2[0] + " nanoseconds");
-            writer.newLine();
-            writer.write("Time taken for ArrayList sort  " + result2[1] + " nanoseconds");
-            writer.newLine();
-
             double[] result3 = timeContains(c, reps);
-            writer.write("Time taken for LinkedList contains " + result3[0] + " nanoseconds");
-            writer.newLine();
-            writer.write("Time taken for ArrayList contains  " + result3[1] + " nanoseconds");
-            writer.newLine();
-
             double[] result4 = timeGet(c, reps);
-            writer.write("Time taken for LinkedList get  " + result4[0] + " nanoseconds");
-            writer.newLine();
-            writer.write("Time taken for ArrayList get  " + result4[1] + " nanoseconds");
-            writer.newLine(); 
-
-            
             double[] result5 = timeRemove(c, reps);
-            writer.write("Time taken for LinkedList remove " + result5[0] + " nanoseconds");
-            writer.newLine();
-            writer.write("Time taken for ArrayList remove  " + result5[1] + " nanoseconds");
-            writer.newLine();
-
             double[] result7 = timeSize(c, reps);
-            writer.write("Time taken for LinkedList size " + result7[0] + " nanoseconds");
+
+            writer.write("LinkedList ");
             writer.newLine();
-            writer.write("Time taken for ArrayList size " + result7[1] + " nanoseconds");
+            writer.write("timeAddAll " + result1[0]); 
             writer.newLine();
+            writer.write("timeSort " + result2[0]);
+            writer.newLine();
+            writer.write("timeContains " + result3[0]);
+            writer.newLine();
+            writer.write("timeGet " + result4[0]);
+            writer.newLine();
+            writer.write("timeRemove " + result5[0]);
+            writer.newLine();
+            writer.write("timeSize " + result7[0]);
+
+            writer.newLine();
+            writer.write("ArrayList ");
+            writer.newLine();
+            writer.write("timeAddAll " + result1[1]); 
+            writer.newLine();
+            writer.write("timeSort " + result2[1]);
+            writer.newLine();
+            writer.write("timeContains " + result3[1]);
+            writer.newLine();
+            writer.write("timeGet " + result4[1]);
+            writer.newLine();
+            writer.write("timeRemove " + result5[1]);
+            writer.newLine();
+            writer.write("timeSize " + result7[1]);
+        
 
             writer.close();
         } catch (IOException e) {
