@@ -135,10 +135,10 @@ plot_two_datas(list(file_get_data(input_files[9]), file_get_data(input_files[10]
 plot_two_datas(list(file_get_data(input_files[8]), file_get_data(input_files[7])), "Osorterad TreeMap & HashMap")
 
 #Hash
-plot_two_datas(list(file_get_data(input_files[5]), file_get_data(input_files[4])), "OsorteradIBlock ArrayList & DLinkedList")
+plot_two_datas(list(file_get_data(input_files[5]), file_get_data(input_files[4])), "OsorteradIBlock TreeMap & HashMap")
 
 #Hash
-plot_two_datas(list(file_get_data(input_files[12]), file_get_data(input_files[11])), "SorteradIBlock ArrayList & DLinkedList")
+plot_two_datas(list(file_get_data(input_files[12]), file_get_data(input_files[11])), "SorteradIBlock TreeMap & HashMap")
 
 
 
