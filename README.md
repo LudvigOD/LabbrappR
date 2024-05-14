@@ -90,3 +90,66 @@ public class RandomIntegerGenerator {
         }
     }
 }
+
+Kopiera den här main metoden och runna med argument 100. package Banan;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) {
+        runTestsAndGatherResults(100);
+    }
+
+    public static void runTestsAndGatherResults(int iterations) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("all_results.txt"));
+
+            for (int i = 0; i < iterations; i++) {
+                TestList t = new TestList(10000);
+                TestSet t_2 = new TestSet(10000);
+                t.testLists();
+                t_2.testSets();
+
+                // Write the results of each iteration to the file
+                writer.write("Iteration " + (i + 1) + ":\n");
+
+                // Append the results from TestList
+                writer.write("Results from TestList:\n");
+                 writer.write("Input resultOsorteradIBlock:\n");
+                appendResultsToFile(writer, "resultOsorteradIBlock.txt");
+                 writer.write("Input resultSorteradIBlock:\n");
+                appendResultsToFile(writer, "resultSorteradIBlock.txt");
+                 writer.write("Input resultOsorterad:\n");
+                appendResultsToFile(writer, "resultOsorterad.txt");
+
+                // Append the results from TestSet
+                writer.write("Results from TestSet:\n");
+                writer.write("Input resultOsorteradIBlockSets:\n");
+                appendResultsToFile(writer, "resultOsorteradIBlockSets.txt");
+                writer.write("Input resultSorteradIBlockSets:\n");
+                appendResultsToFile(writer, "resultSorteradIBlockSets.txt");
+                writer.write("Input resultOsorteradSets:\n");
+                appendResultsToFile(writer, "resultOsorteradSets.txt");
+
+                writer.newLine(); // Add a newline for clarity between iterations
+            }
+
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void appendResultsToFile(BufferedWriter writer, String fileName) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            writer.write(line);
+            writer.newLine();
+        }
+        reader.close();
+    }
+}
