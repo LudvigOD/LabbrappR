@@ -1,6 +1,7 @@
 package Banan;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -27,7 +28,8 @@ public class TestList {
     }
     private void runAndWriteTestResults(Creator c) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(c.outPutName + ".txt"));
+            BufferedWriter writerLinked = new BufferedWriter(new FileWriter(new File("./Results", c.outPutName + "LinkedList.txt")));
+            BufferedWriter writerArr = new BufferedWriter(new FileWriter(new File("./Results", c.outPutName + "ArrayList.txt")));
 
             
             double[] result1 = timeAddAll(c, reps);
@@ -37,37 +39,37 @@ public class TestList {
             double[] result5 = timeRemove(c, reps);
             double[] result7 = timeSize(c, reps);
 
-            writer.write("LinkedList ");
-            writer.newLine();
-            writer.write("timeAddAll " + result1[0]); 
-            writer.newLine();
-            writer.write("timeSort " + result2[0]);
-            writer.newLine();
-            writer.write("timeContains " + result3[0]);
-            writer.newLine();
-            writer.write("timeGet " + result4[0]);
-            writer.newLine();
-            writer.write("timeRemove " + result5[0]);
-            writer.newLine();
-            writer.write("timeSize " + result7[0]);
+            writerLinked.write("LinkedList");
+            writerLinked.newLine();
+            writerLinked.write("timeAddAll " + result1[0]); 
+            writerLinked.newLine();
+            writerLinked.write("timeSort " + result2[0]);
+            writerLinked.newLine();
+            writerLinked.write("timeContains " + result3[0]);
+            writerLinked.newLine();
+            writerLinked.write("timeGet " + result4[0]);
+            writerLinked.newLine();
+            writerLinked.write("timeRemove " + result5[0]);
+            writerLinked.newLine();
+            writerLinked.write("timeSize " + result7[0]);
 
-            writer.newLine();
-            writer.write("ArrayList ");
-            writer.newLine();
-            writer.write("timeAddAll " + result1[1]); 
-            writer.newLine();
-            writer.write("timeSort " + result2[1]);
-            writer.newLine();
-            writer.write("timeContains " + result3[1]);
-            writer.newLine();
-            writer.write("timeGet " + result4[1]);
-            writer.newLine();
-            writer.write("timeRemove " + result5[1]);
-            writer.newLine();
-            writer.write("timeSize " + result7[1]);
+            writerArr.write("ArrayList");
+            writerArr.newLine();
+            writerArr.write("timeAddAll " + result1[1]); 
+            writerArr.newLine();
+            writerArr.write("timeSort " + result2[1]);
+            writerArr.newLine();
+            writerArr.write("timeContains " + result3[1]);
+            writerArr.newLine();
+            writerArr.write("timeGet " + result4[1]);
+            writerArr.newLine();
+            writerArr.write("timeRemove " + result5[1]);
+            writerArr.newLine();
+            writerArr.write("timeSize " + result7[1]);
         
 
-            writer.close();
+            writerArr.close();
+            writerLinked.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

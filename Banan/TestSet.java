@@ -9,6 +9,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.TreeSet;
+import java.io.File;
+
 public class TestSet {
     int reps;
 
@@ -27,35 +29,38 @@ public class TestSet {
     }
     private void runAndWriteTestResults(Creator c){
         try{
-            BufferedWriter writer = new BufferedWriter(new FileWriter(c.outPutName + ".txt"));
+            BufferedWriter writerHash = new BufferedWriter(new FileWriter(new File("./Results", c.outPutName + "HashMap.txt")));
+            BufferedWriter writerTree = new BufferedWriter(new FileWriter(new File("./Results", c.outPutName + "TreeMap.txt")));
+
             double[] result1 = timeAddAll(c, reps);
             double[] result3 = timeContains(c, reps);
             double[] result5 = timeRemove(c, reps);
             double[] result7 = timeSize(c, reps);
 
-            writer.write("TreeSet ");
-            writer.newLine();
-            writer.write("timeAddAll " + result1[0]); 
-            writer.newLine();
-            writer.write("timeContains " + result3[0]);
-            writer.newLine();
-            writer.write("timeRemove " + result5[0]);
-            writer.newLine();
-            writer.write("timeSize " + result7[0]);
+            writerTree.write("TreeSet");
+            writerTree.newLine();
+            writerTree.write("timeAddAll " + result1[0]); 
+            writerTree.newLine();
+            writerTree.write("timeContains " + result3[0]);
+            writerTree.newLine();
+            writerTree.write("timeRemove " + result5[0]);
+            writerTree.newLine();
+            writerTree.write("timeSize " + result7[0]);
 
-            writer.newLine();
-            writer.write("HashSet ");
-            writer.newLine();
-            writer.write("timeAddAll " + result1[1]); 
-            writer.newLine();
-            writer.write("timeContains " + result3[1]);
-            writer.newLine();
-            writer.write("timeRemove " + result5[1]);
-            writer.newLine();
-            writer.write("timeSize " + result7[1]);
+            writerHash.newLine();
+            writerHash.write("HashSet");
+            writerHash.newLine();
+            writerHash.write("timeAddAll " + result1[1]); 
+            writerHash.newLine();
+            writerHash.write("timeContains " + result3[1]);
+            writerHash.newLine();
+            writerHash.write("timeRemove " + result5[1]);
+            writerHash.newLine();
+            writerHash.write("timeSize " + result7[1]);
     
 
-            writer.close();
+            writerHash.close();
+            writerTree.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
