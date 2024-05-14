@@ -1,0 +1,7 @@
+ArrayList
+timeAddAll 2.88170083E8
+timeSort 4.144235375E9
+timeContains 2.668875E7
+timeGet 315500.0
+timeRemove 3.9382455791E10
+timeSize 187125.0
