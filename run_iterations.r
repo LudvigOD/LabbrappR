@@ -1,19 +1,59 @@
 source("./mr_script.r")
 
-iterations <- 5;
-
 #data_vault stores the iteration results in a matrice grouped by row
 data_vault <- data.frame(
-    `Osorterad` = NA, 
-    `Osorterad I Block` = NA,
-    `Sorterad I Block` = NA
+    `Osorterad` = c(),
+    `Osorterad I Block` = c(),
+    `Sorterad I Block` = c()
 )
 
 data_vault
 
-for(i in 1:iterations){
-    print(i)
+#give files input_files as argument
+run_iterations <- function(iterations, files){
+
+    prefix <- c(
+        "resultOsorterad", 
+        "resultOsorteradIBlock", 
+        "resultSorteradIBlock"
+        )
+
+
+
+    run_iterations <- function(iterations, files){
+    prefix <- c(
+        "resultOsorterad", 
+        "resultOsorteradIBlock", 
+        "resultSorteradIBlock"
+    )
+
+    for(i in 1:iterations){
+        system(
+            'cd "/Users/ludvigolunddanielsson/Desktop/progkurs/R-language/Labbproj/LabbrappR/" && javac Main.java && java Main'
+        )
+
+        for(file in files){
+            for(j in 1:length(prefix)){
+                if(startsWith(file, prefix[j])){
+                    # Extract the data from the file (You need to define file_get_data function)
+                    data <- file_get_data(file)
+                    
+                    # Add the data to the appropriate column in data_vault
+                    data_vault[i, j] <- data
+                    break
+                }
+            }
+        }
+    }
 }
+
+
+
+}
+
+
+run_iterations(1, input_files)
+
 
 
 # for(file in input_files){

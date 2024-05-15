@@ -20,9 +20,6 @@ file_get_data <- function(file_name) {
 }
 
 
-data <- file_get_data(input_files[1])
-
-
 plot_data <- function(data) {
   if (length(data) >= 2) {  # Check if dataframe has at least two columns
     # Set up PDF output device

@@ -1,8 +1,9 @@
-package Banan;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import Banan.TestList;
+import Banan.TestSet;
 
 public class Main {
     public static void main(String[] args){
