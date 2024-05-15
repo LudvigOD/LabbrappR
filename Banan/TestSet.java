@@ -46,8 +46,8 @@ public class TestSet {
             writerTree.write("timeRemove " + result5[0]);
             writerTree.newLine();
             writerTree.write("timeSize " + result7[0]);
-
             writerHash.newLine();
+            
             writerHash.write("HashSet");
             writerHash.newLine();
             writerHash.write("timeAddAll " + result1[1]); 
