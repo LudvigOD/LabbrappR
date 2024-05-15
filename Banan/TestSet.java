@@ -19,9 +19,9 @@ public class TestSet {
     }
 
     public void testSets(){
-        Creator osorteradIBlock = new Creator("Banan/Osorterad_I_Block.txt", "resultOsorteradIBlockSets");
-        Creator sorteradHundraTal = new Creator("Banan/Sorterad_I_Block.txt", "resultSorteradIBlockSets");
-        Creator osorterad = new Creator("Banan/Osorterad.txt", "resultOsorteradSets");
+        Creator osorteradIBlock = new Creator("Data/Osorterad_I_Block.txt", "resultOsorteradIBlockSets");
+        Creator sorteradHundraTal = new Creator("Data/Sorterad_I_Block.txt", "resultSorteradIBlockSets");
+        Creator osorterad = new Creator("Data/Osorterad.txt", "resultOsorteradSets");
 
         runAndWriteTestResults(osorteradIBlock);
         runAndWriteTestResults(sorteradHundraTal);

@@ -1,7 +1,7 @@
 LinkedList
-timeAddAll 6.42559375E8
-timeSort 4.648845E9
-timeContains 1.03561083E8
-timeGet 4.8734042E7
-timeRemove 8.01988667E8
-timeSize 243125.0
+timeAddAll 7.05597459E8
+timeSort 4.744798792E9
+timeContains 1.01849E8
+timeGet 4.7448167E7
+timeRemove 7.51227125E8
+timeSize 220542.0

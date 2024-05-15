@@ -18,9 +18,9 @@ public class TestList {
     }
 
     public void testLists(){
-        Creator osorteradIBlock = new Creator("Banan/Osorterad_I_Block.txt", "resultOsorteradIBlock");
-        Creator sorteradHundraTal = new Creator("Banan/Sorterad_I_Block.txt", "resultSorteradIBlock");
-        Creator osorterad = new Creator("Banan/Osorterad.txt", "resultOsorterad");
+        Creator osorteradIBlock = new Creator("Data/Osorterad_I_Block.txt", "resultOsorteradIBlock");
+        Creator sorteradHundraTal = new Creator("Data/Sorterad_I_Block.txt", "resultSorteradIBlock");
+        Creator osorterad = new Creator("Data/Osorterad.txt", "resultOsorterad");
 
         runAndWriteTestResults(osorteradIBlock);
         runAndWriteTestResults(sorteradHundraTal);
