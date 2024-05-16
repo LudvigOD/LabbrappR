@@ -1,7 +1,7 @@
 ArrayList
-timeAddAll 4.74718792E8
-timeSort 4.078813709E9
-timeContains 2.6403166E7
-timeGet 316292.0
-timeRemove 3.8761943292E10
-timeSize 181791.0
+timeAddAll 4.764625E8
+timeSort 4.245041583E9
+timeContains 2.7024625E7
+timeGet 319333.0
+timeRemove 3.932041575E10
+timeSize 229917.0

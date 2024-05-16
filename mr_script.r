@@ -19,53 +19,6 @@ file_get_data <- function(file_name) {
   return(list)
 }
 
-
-plot_data <- function(data) {
-  if (length(data) >= 2) {  # Check if dataframe has at least two columns
-    # Set up PDF output device
-    pdf(paste("./Plots/", data[[3]], ".pdf", sep = ""))
-    barplot(
-      height = data[[2]]$Values, 
-      names.arg = data[[2]]$Functions, 
-      col = "red", 
-      xlab = "Functions", 
-      ylab = "Values",
-      main = data[[3]],
-      cex.names = 0.8
-    )
-    dev.off()  # Close the output device after plotting
-    print("Plot saved as 'plot.pdf'")
-  } else {
-    print("Dataframe does not contain enough data for plotting.")
-  }
-}
-
-plot_data2 <- function(data) {
-  if (length(data) >= 2) {  # Check if dataframe has at least two columns
-    # Set up PDF output device
-    pdf(paste("./Plots/", data[[3]], "test", ".pdf", sep = ""))
-    plot(
-      data[[2]]$Values,
-      type = "l",
-      col = "red", 
-      xlab = "Functions", 
-      ylab = "Values",
-      main = data[[3]],
-      xaxt = "n",
-    )
-    axis(
-      1,
-      at = seq_len(nrow(data[[2]])),
-      labels = data[[2]]$Functions,
-      cex.axis = 0.8
-      )
-    dev.off()  # Close the output device after plotting
-    print("Plot saved as 'plot.pdf'")
-  } else {
-    print("Dataframe does not contain enough data for plotting.")
-  }
-}
-
 plot_two_datas <- function(datas, sorting) {
   if (length(datas[[1]]) >= 2) {  # Check if dataframe has at least two columns
     # Set up PDF output device

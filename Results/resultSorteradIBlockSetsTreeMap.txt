@@ -1,5 +1,5 @@
 TreeSet
-timeAddAll 8.494218625E9
-timeContains 1036000.0
-timeRemove 9.8162585E9
-timeSize 148500.0
+timeAddAll 9.902501708E9
+timeContains 1199750.0
+timeRemove 1.1305891791E10
+timeSize 161583.0
