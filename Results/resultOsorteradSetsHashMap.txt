@@ -1,6 +1,6 @@
 
 HashSet
-timeAddAll 1.126595208E9
-timeContains 145458.0
-timeRemove 2.303953209E9
-timeSize 30583.0
+timeAddAll 9.17515834E8
+timeContains 131875.0
+timeRemove 1.797099542E9
+timeSize 26292.0

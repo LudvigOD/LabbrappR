@@ -19,55 +19,7 @@ file_get_data <- function(file_name) {
   return(list)
 }
 
-plot_two_datas <- function(datas, sorting) {
-  if (length(datas[[1]]) >= 2) {  # Check if dataframe has at least two columns
-    # Set up PDF output device
-    pdf(
-      paste(
-        "./Plots/", 
-        datas[[1]][[3]],
-        "_",
-        datas[[2]][[3]],
-        "test_with_2datas",
-        ".pdf",
-        sep = ""
-        )
-      )
-    plot(
-      datas[[1]][[2]]$Values,
-      type = "l",
-      col = "red", 
-      xlab = "Functions", 
-      ylab = "Values",
-      main = sorting,
-      xaxt = "n",
-    )
 
-    lines(
-        datas[[2]][[2]]$Values,
-        col = "blue", 
-      )
-
-    axis(
-      1,
-      at = seq_len(nrow(datas[[1]][[2]])),
-      labels = datas[[1]][[2]]$Functions,
-      cex.axis = 0.8
-      )
-
-    legend(
-      "topright",
-      legend = c(datas[[1]][[1]], datas[[2]][[1]]),
-      col = c("red", "blue"),
-      lty = 1
-    )
-
-    dev.off()  # Close the output device after plotting
-    print("Plot saved as 'plot.pdf'")
-  } else {
-    print("Dataframe does not contain enough data for plotting.")
-  }
-}
 
 #plot_data2(data)
 
