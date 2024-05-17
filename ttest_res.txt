@@ -1,0 +1,73 @@
+TTEST_RESULTS
+~~~~~~~~~~~~~~~~~~~~~~~START-SORTING~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+OsorteradIBlock
+---------START-STRUCTURE---------
+ArrayList
+mean 8284982443.77835
+---------END-STRUCTURE---------
+
+---------START-STRUCTURE---------
+LinkedList
+mean 1202960826.02333
+---------END-STRUCTURE---------
+
+---------START-STRUCTURE---------
+TreeSet
+mean 3520519620.1225
+---------END-STRUCTURE---------
+
+---------START-STRUCTURE---------
+HashSet
+mean 713266398.852499
+---------END-STRUCTURE---------
+
+~~~~~~~~~~~~~~~~~~~~~~~END-SORTING~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~START-SORTING~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Osorterad
+---------START-STRUCTURE---------
+ArrayList
+mean 9116818821.23333
+---------END-STRUCTURE---------
+
+---------START-STRUCTURE---------
+LinkedList
+mean 2207019789.10666
+---------END-STRUCTURE---------
+
+---------START-STRUCTURE---------
+TreeSet
+mean 5166957628.745
+---------END-STRUCTURE---------
+
+---------START-STRUCTURE---------
+HashSet
+mean 727291930.954999
+---------END-STRUCTURE---------
+
+~~~~~~~~~~~~~~~~~~~~~~~END-SORTING~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~START-SORTING~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SorteradIBlock
+---------START-STRUCTURE---------
+ArrayList
+mean 8368785338.07002
+---------END-STRUCTURE---------
+
+---------START-STRUCTURE---------
+LinkedList
+mean 1425620739.16833
+---------END-STRUCTURE---------
+
+---------START-STRUCTURE---------
+TreeSet
+mean 5198745364.26499
+---------END-STRUCTURE---------
+
+---------START-STRUCTURE---------
+HashSet
+mean 760667955.085
+---------END-STRUCTURE---------
+
+~~~~~~~~~~~~~~~~~~~~~~~END-SORTING~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+

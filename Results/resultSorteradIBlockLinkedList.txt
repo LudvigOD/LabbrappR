@@ -1,0 +1,7 @@
+LinkedList
+timeAddAll 6.00281E8
+timeSort 6.784268958E9
+timeContains 8.2847042E7
+timeGet 4.8597833E7
+timeRemove 8.33738875E8
+timeSize 230292.0
