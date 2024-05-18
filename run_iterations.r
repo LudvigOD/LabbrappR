@@ -16,7 +16,7 @@ list_func <- c(
         "timeContains",
         "timeRemove",
         "timeSize"
-    )
+  )
 
 
 
@@ -310,6 +310,10 @@ get_mean <- function(df_list){
   
   print(names(df_list))
   
+  
+  
+  
+  
   write("MEAN_RESULTS", file)
   
   
@@ -317,16 +321,221 @@ get_mean <- function(df_list){
     write("~~~~~~~~~~~~~~~~~~~~~~~START-SORTING~~~~~~~~~~~~~~~~~~~~~~~~~~~~", file, append = TRUE)
     write(sorting, file, append = TRUE)
     for(struct in names(df_list[[sorting]])){
+      print(struct)
       write("---------START-STRUCTURE---------", file, append = TRUE)
       write(struct, file, append = TRUE)
-      print(t.test(df_list[[sorting]][[struct]])$estimate)
-      write(t.test(df_list[[sorting]][[struct]])$estimate, file, append = TRUE)
+      
+      if(struct == "LinkedList" || struct == "ArrayList"){
+        for(funcnr in 1:length(list_func)){
+          write("......", file, append = TRUE)
+          write(list_func[funcnr], file, append = TRUE)
+          write(mean(df_list[[sorting]][[struct]][[list_func[funcnr]]]), file, append = TRUE)
+          write("......\n", file, append = TRUE)
+        }
+      }
+      else{
+        for(funcnr in 1:length(set_func)){
+          write("......", file, append = TRUE)
+          write(set_func[funcnr], file, append = TRUE)
+          write(mean(df_list[[sorting]][[struct]][[set_func[funcnr]]]), file, append = TRUE)
+          write("......\n", file, append = TRUE)
+        }
       write("---------END-STRUCTURE---------\n", file, append = TRUE)
     }
     write("~~~~~~~~~~~~~~~~~~~~~~~END-SORTING~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n", file, append = TRUE)
-    
+  
+    }
+  
   }
 }
+
+
+
+
+
+
+
+
+
+get_pvalue <- function(df_list){
+  file <- "pvalue_res.txt"
+  
+  print(names(df_list))
+  
+  write("PVALUE_RESULTS", file)
+  
+  # Initialize my_list with all possible keys
+  my_list <- list(
+    OsorteradIBlock = list(
+      LinkedList = list(
+        timeAddAll = list(),
+        timeSort = list(),
+        timeContains = list(),
+        timeGet = list(),
+        timeRemove = list(),
+        timeSize = list()
+      ),
+      ArrayList = list(
+        timeAddAll = list(),
+        timeSort = list(),
+        timeContains = list(),
+        timeGet = list(),
+        timeRemove = list(),
+        timeSize = list()
+      ),
+      TreeSet = list(
+        timeAddAll = list(),
+        timeContains = list(),
+        timeRemove = list(),
+        timeSize = list()
+      ),
+      HashSet = list(
+        timeAddAll = list(),
+        timeContains = list(),
+        timeRemove = list(),
+        timeSize = list()
+      )
+    ),
+    SorteradIBlock = list(
+      LinkedList = list(
+        timeAddAll = list(),
+        timeSort = list(),
+        timeContains = list(),
+        timeGet = list(),
+        timeRemove = list(),
+        timeSize = list()
+      ),
+      ArrayList = list(
+        timeAddAll = list(),
+        timeSort = list(),
+        timeContains = list(),
+        timeGet = list(),
+        timeRemove = list(),
+        timeSize = list()
+      ),
+      TreeSet = list(
+        timeAddAll = list(),
+        timeContains = list(),
+        timeRemove = list(),
+        timeSize = list()
+      ),
+      HashSet = list(
+        timeAddAll = list(),
+        timeContains = list(),
+        timeRemove = list(),
+        timeSize = list()
+      )
+    ),
+    Osorterad = list(
+      LinkedList = list(
+        timeAddAll = list(),
+        timeSort = list(),
+        timeContains = list(),
+        timeGet = list(),
+        timeRemove = list(),
+        timeSize = list()
+      ),
+      ArrayList = list(
+        timeAddAll = list(),
+        timeSort = list(),
+        timeContains = list(),
+        timeGet = list(),
+        timeRemove = list(),
+        timeSize = list()
+      ),
+      TreeSet = list(
+        timeAddAll = list(),
+        timeContains = list(),
+        timeRemove = list(),
+        timeSize = list()
+      ),
+      HashSet = list(
+        timeAddAll = list(),
+        timeContains = list(),
+        timeRemove = list(),
+        timeSize = list()
+      )
+    )
+  )
+  
+  for(sorting in names(df_list)){
+    write(sorting, file, append = TRUE)
+    
+    for(struct in names(df_list[[sorting]])){
+      print(struct)
+      
+      if(struct %in% c("LinkedList", "ArrayList")){
+        for(funcnr in 1:length(list_func)){
+          func_name <- list_func[funcnr]
+          tmp <- df_list[[sorting]][[struct]][[func_name]]
+          
+          # Append tmp as its own list inside the function key
+          my_list[[sorting]][[struct]][[func_name]] <- c(my_list[[sorting]][[struct]][[func_name]], list(tmp))
+        }
+      } else {
+        for(funcnr in 1:length(set_func)){
+          func_name <- set_func[funcnr]
+          tmp <- df_list[[sorting]][[struct]][[func_name]]
+          
+          # Append tmp as its own list inside the function key
+          my_list[[sorting]][[struct]][[func_name]] <- c(my_list[[sorting]][[struct]][[func_name]], list(tmp))
+        }
+      }
+      
+      
+      
+    }
+    
+  }
+  
+  print("Before plist")
+  p_list <- list(
+    Osorterad = list(
+      timeAddAll = t.test(my_list$Osorterad$ArrayList$timeAddAll[[1]], my_list$Osorterad$LinkedList$timeAddAll[[1]])$p.value,
+      timeSort = t.test(my_list$Osorterad$ArrayList$timeSort[[1]], my_list$Osorterad$LinkedList$timeSort[[1]])$p.value,
+      timeContains = t.test(my_list$Osorterad$ArrayList$timeContains[[1]], my_list$Osorterad$LinkedList$timeContains[[1]],)$p.value,
+      timeGet = t.test(my_list$Osorterad$ArrayList$timeGet[[1]], my_list$Osorterad$LinkedList$timeGet[[1]])$p.value,
+      timeRemove = t.test(my_list$Osorterad$ArrayList$timeAddAll[[1]], my_list$Osorterad$LinkedList$timeAddAll[[1]])$p.value,
+      timeSize = t.test(my_list$Osorterad$ArrayList$timeSize[[1]], my_list$Osorterad$LinkedList$timeSize[[1]])$p.value
+    ),
+    OsorteradIBlock = list(
+      timeAddAll = t.test(my_list$OsorteradIBlock$ArrayList$timeAddAll[[1]], my_list$OsorteradIBlock$LinkedList$timeAddAll[[1]])$p.value,
+      timeSort = t.test(my_list$OsorteradIBlock$ArrayList$timeSort[[1]], my_list$OsorteradIBlock$LinkedList$timeSort[[1]])$p.value,
+      timeContains = t.test(my_list$OsorteradIBlock$ArrayList$timeContains[[1]], my_list$OsorteradIBlock$LinkedList$timeContains[[1]])$p.value,
+      timeGet = t.test(my_list$OsorteradIBlock$ArrayList$timeGet[[1]], my_list$OsorteradIBlock$LinkedList$timeGet[[1]])$p.value,
+      timeRemove = t.test(my_list$OsorteradIBlock$ArrayList$timeAddAll[[1]], my_list$OsorteradIBlock$LinkedList$timeAddAll[[1]])$p.value,
+      timeSize = t.test(my_list$OsorteradIBlock$ArrayList$timeSize[[1]], my_list$OsorteradIBlock$LinkedList$timeSize[[1]])$p.value
+    ),
+    SorteradIBlock = list(
+      timeAddAll = t.test(my_list$SorteradIBlock$ArrayList$timeAddAll[[1]], my_list$SorteradIBlock$LinkedList$timeAddAll[[1]])$p.value,
+      timeSort = t.test(my_list$SorteradIBlock$ArrayList$timeSort[[1]], my_list$SorteradIBlock$LinkedList$timeSort[[1]])$p.value,
+      timeContains = t.test(my_list$SorteradIBlock$ArrayList$timeContains[[1]], my_list$SorteradIBlock$LinkedList$timeContains[[1]])$p.value,
+      timeGet = t.test(my_list$SorteradIBlock$ArrayList$timeGet[[1]], my_list$SorteradIBlock$LinkedList$timeGet[[1]])$p.value,
+      timeRemove = t.test(my_list$SorteradIBlock$ArrayList$timeAddAll[[1]], my_list$SorteradIBlock$LinkedList$timeAddAll[[1]])$p.value,
+      timeSize = t.test(my_list$SorteradIBlock$ArrayList$timeSize[[1]], my_list$SorteradIBlock$LinkedList$timeSize[[1]])$p.value
+    )
+  )
+  print("After plist")
+  
+  
+  for(sorting in names(p_list)){
+    write(paste("~~~~~~~~~~~~~~~~~~", sorting, "~~~~~~~~~~~~~~~~~~"), file, append = T)
+    for(method in names(p_list[[sorting]])){
+      write(paste("----", method, "----"),file,append = T)
+      write(p_list[[sorting]][[method]], file, append = T)
+      write("------------\n", file, append = T)
+    }
+    write("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", file, append = T)
+  }
+  
+  return(p_list)
+}
+
+
+
+
+
+
 
 
 # The function get_pvalue is not finished, I didnt have the energy for it.
