@@ -1,6 +1,39 @@
 #Teamwork makes the dream work!
 
 
+#Litteratur
+
+##Nyckelord: 
+"time complexity"
+
+##Sökningsresultat:
+Binary Search Sort Algorithm -Yet Another Sorting Algorithm with Binary Search having O(nlogn) and O(n) time complexity
+
+Exhaustive Analysis and Time Complexity Evaluation of Sorting Algorithms
+
+Time and Space Complexity of Deterministic and Nondeterministic Decision Trees: Local Approach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#RandonIntegerGernator
+
 Randomeintegergenrator.java is only for creating data, dont download!
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -149,6 +182,8 @@ public class Main {
         while ((line = reader.readLine()) != null) {
             writer.write(line);
             writer.newLine();
+
+            
         }
         reader.close();
     }
