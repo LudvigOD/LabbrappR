@@ -1,82 +1,121 @@
-PVALUE_RESULTS
-OsorteradIBlock
+P_VALUES
+***************************
 Osorterad
+.......
+ArrayList.LinkedList
+timeAddAll : 9.25878915329258e-60
+timeSort : 2.73705510808441e-09
+timeContains : 1.05521632856937e-102
+timeGet : 7.51930874033532e-111
+timeRemove : 7.08599215367815e-113
+timeSize : 3.86904829992274e-27
+.......
+ArrayList.TreeSet
+timeAddAll : 2.21414517090499e-105
+timeContains : 1.55635616524147e-112
+timeRemove : 5.40865044665478e-114
+timeSize : 0.606306372340682
+.......
+ArrayList.HashSet
+timeAddAll : 4.33881752254232e-71
+timeContains : 1.02685662573003e-113
+timeRemove : 3.97351801163025e-112
+timeSize : 1.33460082377486e-48
+.......
+LinkedList.TreeSet
+timeAddAll : 3.85391963355068e-105
+timeContains : 2.87378783196319e-108
+timeRemove : 1.4638237433252e-101
+timeSize : 6.28965697668558e-27
+.......
+LinkedList.HashSet
+timeAddAll : 9.80257669560082e-59
+timeContains : 1.06186501529265e-108
+timeRemove : 3.05563250948795e-99
+timeSize : 2.66482985379021e-35
+.......
+TreeSet.HashSet
+timeAddAll : 2.4894261760625e-106
+timeContains : 3.0256569787927e-98
+timeRemove : 2.67621470359833e-99
+timeSize : 1.25366367143661e-30
+***************************
+OsorteradIBlock
+.......
+ArrayList.LinkedList
+timeAddAll : 8.98260900685091e-29
+timeSort : 9.241788311739e-14
+timeContains : 1.39515639974028e-90
+timeGet : 7.7795018468495e-97
+timeRemove : 7.33457335836523e-104
+timeSize : 3.11752824178861e-23
+.......
+ArrayList.TreeSet
+timeAddAll : 5.01144052626895e-127
+timeContains : 2.41166362392681e-90
+timeRemove : 5.4453726812344e-101
+timeSize : 1.31316684051851e-47
+.......
+ArrayList.HashSet
+timeAddAll : 3.19467929165389e-86
+timeContains : 1.8213489798584e-91
+timeRemove : 3.83496760287992e-103
+timeSize : 6.17974464237258e-31
+.......
+LinkedList.TreeSet
+timeAddAll : 5.03872944254309e-123
+timeContains : 2.70890219160538e-95
+timeRemove : 4.69146005177729e-98
+timeSize : 1.01523878398308e-70
+.......
+LinkedList.HashSet
+timeAddAll : 1.76075004826871e-62
+timeContains : 1.41743773070927e-95
+timeRemove : 1.19399503038322e-86
+timeSize : 1.20687128375844e-59
+.......
+TreeSet.HashSet
+timeAddAll : 8.77579439688735e-121
+timeContains : 5.05989307759866e-84
+timeRemove : 1.60179297833554e-96
+timeSize : 3.51844211781674e-25
+***************************
 SorteradIBlock
-~~~~~~~~~~~~~~~~~~ Osorterad ~~~~~~~~~~~~~~~~~~
----- timeAddAll ----
-9.258789e-60
-------------
-
----- timeSort ----
-2.737055e-09
-------------
-
----- timeContains ----
-1.055216e-102
-------------
-
----- timeGet ----
-7.519309e-111
-------------
-
----- timeRemove ----
-9.258789e-60
-------------
-
----- timeSize ----
-3.869048e-27
-------------
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~ OsorteradIBlock ~~~~~~~~~~~~~~~~~~
----- timeAddAll ----
-8.982609e-29
-------------
-
----- timeSort ----
-9.241788e-14
-------------
-
----- timeContains ----
-1.395156e-90
-------------
-
----- timeGet ----
-7.779502e-97
-------------
-
----- timeRemove ----
-8.982609e-29
-------------
-
----- timeSize ----
-3.117528e-23
-------------
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~ SorteradIBlock ~~~~~~~~~~~~~~~~~~
----- timeAddAll ----
-4.501801e-09
-------------
-
----- timeSort ----
-1.585451e-17
-------------
-
----- timeContains ----
-3.835661e-116
-------------
-
----- timeGet ----
-1.015416e-106
-------------
-
----- timeRemove ----
-4.501801e-09
-------------
-
----- timeSize ----
-3.236698e-12
-------------
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.......
+ArrayList.LinkedList
+timeAddAll : 4.50180087446167e-09
+timeSort : 1.5854508640851e-17
+timeContains : 3.83566090851334e-116
+timeGet : 1.01541641635316e-106
+timeRemove : 9.55962982729224e-117
+timeSize : 3.23669837466244e-12
+.......
+ArrayList.TreeSet
+timeAddAll : 2.95238605441868e-107
+timeContains : 4.05771976680612e-86
+timeRemove : 2.32890348478603e-119
+timeSize : 0.00117994175181018
+.......
+ArrayList.HashSet
+timeAddAll : 3.42130743470003e-72
+timeContains : 1.36351185385834e-90
+timeRemove : 2.38983958725169e-116
+timeSize : 1.47183973860906e-15
+.......
+LinkedList.TreeSet
+timeAddAll : 1.78962347582279e-106
+timeContains : 4.50491672376647e-109
+timeRemove : 2.91446640685719e-104
+timeSize : 1.48228769921673e-17
+.......
+LinkedList.HashSet
+timeAddAll : 3.03439994580769e-62
+timeContains : 4.01587766655511e-110
+timeRemove : 8.14276380287863e-84
+timeSize : 2.73960078472047e-56
+.......
+TreeSet.HashSet
+timeAddAll : 5.8945641597951e-107
+timeContains : 5.87465296759608e-08
+timeRemove : 1.56977334538647e-104
+timeSize : 0.000761942621196056

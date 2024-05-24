@@ -1,6 +1,10 @@
 source("./mr_script.r")
-
+library(dplyr)
+library(tidyr)
+library(gtools)
 # Initialize data_vault as a named list of empty lists
+
+
 
 list_func <- c(
         "timeAddAll",
@@ -18,6 +22,23 @@ list_func <- c(
         "timeSize"
   )
 
+file_get_data <- function(file_name) {
+  tmp_data <- read.csv(
+    file_name,
+    sep = " "
+  )
+  df <- data.frame(
+    Functions = row.names(tmp_data),
+    Values = unlist(tmp_data),
+    row.names = NULL
+  )
+  
+  extracted_name <- gsub(".*/([^/]+)\\.txt", "\\1", file_name)
+  
+  list <- list(colnames(tmp_data)[1], df, extracted_name)
+  
+  return(list)
+}
 
 
 run_iterations <- function(iterations, files){
@@ -534,9 +555,262 @@ get_pvalue <- function(df_list){
 
 
 
+get_pvalue2 <- function(df_list){
+  
+  p_list <- list(
+    Osorterad = list(
+      timeAddAll = list(),
+      timeSort = list(),
+      timeContains = list(),
+      timeGet = list(),
+      timeRemove = list(),
+      timeSize = list()
+    ),
+    OsorteradIBlock = list(
+      timeAddAll = list(),
+      timeSort = list(),
+      timeContains = list(),
+      timeGet = list(),
+      timeRemove = list(),
+      timeSize = list()
+    ),
+    SorteradIBlock = list(
+      timeAddAll = list(),
+      timeSort = list(),
+      timeContains = list(),
+      timeGet = list(),
+      timeRemove = list(),
+      timeSize = list()
+    )
+  )
+  
+  funcs <- list(
+    "timeAddAll",
+    "timeSort",
+    "timeContains",
+    "timeGet",
+    "timeRemove",
+    "timeSize"
+  )
+  
+  for(sorting in names(df_list)){ #getting the sorting
+    for(method in funcs){
+      for(struct in names(df_list[[sorting]])){ #getting the data structure for each sorting
+        if(method %in% names(df_list[[sorting]][[struct]])){
+          p_list[[sorting]][[method]][[struct]] <- 
+            list(list(df_list[[sorting]][[struct]][[method]]))
+        }
 
-
-
+      }
+    }
+  }
+  
+    p_values <- list(
+      Osorterad = list(
+        ArrayList.LinkedList = list(
+          timeAddAll = NULL,
+          timeSort = NULL,
+          timeContains = NULL,
+          timeGet = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        ArrayList.TreeSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        ArrayList.HashSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        LinkedList.TreeSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        LinkedList.HashSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        TreeSet.HashSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        )
+      ),
+      OsorteradIBlock = list(
+        ArrayList.LinkedList = list(
+          timeAddAll = NULL,
+          timeSort = NULL,
+          timeContains = NULL,
+          timeGet = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        ArrayList.TreeSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        ArrayList.HashSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        LinkedList.TreeSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        LinkedList.HashSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        TreeSet.HashSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        )
+      ),
+      SorteradIBlock = list(
+        ArrayList.LinkedList = list(
+          timeAddAll = NULL,
+          timeSort = NULL,
+          timeContains = NULL,
+          timeGet = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        ArrayList.TreeSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        ArrayList.HashSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        LinkedList.TreeSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        LinkedList.HashSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        ),
+        TreeSet.HashSet = list(
+          timeAddAll = NULL,
+          timeContains = NULL,
+          timeRemove = NULL,
+          timeSize = NULL
+        )
+      )
+    )
+  
+  
+  for(sorting in names(p_values)){
+    for(method in names(p_list[[sorting]])){
+      arrLink <- paste("it was null",method)
+      
+      
+      arrLink <- 
+        t.test(
+          p_list[[sorting]][[method]][["ArrayList"]][[1]][[1]], 
+          p_list[[sorting]][[method]][["LinkedList"]][[1]][[1]]
+        )$p.value
+      p_values[[sorting]][["ArrayList.LinkedList"]][[method]] <- arrLink
+      
+      
+      
+      
+      if("TreeSet" %in% names(p_list[[sorting]][[method]])){
+        arrTree <- 
+          t.test(
+            p_list[[sorting]][[method]][["ArrayList"]][[1]][[1]], 
+            p_list[[sorting]][[method]][["TreeSet"]][[1]][[1]]
+          )$p.value
+        p_values[[sorting]][["ArrayList.TreeSet"]][[method]] <- arrTree
+        
+        linkTree <- 
+          t.test(
+            p_list[[sorting]][[method]][["LinkedList"]][[1]][[1]], 
+            p_list[[sorting]][[method]][["TreeSet"]][[1]][[1]]
+          )$p.value
+        p_values[[sorting]][["LinkedList.TreeSet"]][[method]] <- linkTree
+        
+        treeHash <- 
+          t.test(
+            p_list[[sorting]][[method]][["TreeSet"]][[1]][[1]], 
+            p_list[[sorting]][[method]][["HashSet"]][[1]][[1]]
+          )$p.value
+        
+        p_values[[sorting]][["TreeSet.HashSet"]][[method]] <- treeHash
+      }
+      
+      if("HashSet" %in% names(p_list[[sorting]][[method]])){
+        linkHash <- 
+          t.test(
+            p_list[[sorting]][[method]][["LinkedList"]][[1]][[1]], 
+            p_list[[sorting]][[method]][["HashSet"]][[1]][[1]]
+          )$p.value
+        p_values[[sorting]][["LinkedList.HashSet"]][[method]] <- linkHash
+        
+        
+        arrHash <- 
+          t.test(
+            p_list[[sorting]][[method]][["ArrayList"]][[1]][[1]], 
+            p_list[[sorting]][[method]][["HashSet"]][[1]][[1]]
+          )$p.value
+        p_values[[sorting]][["ArrayList.HashSet"]][[method]] <- arrHash
+      }
+      
+      if(!is.null(treeHash)){
+        print(treeHash)
+      }
+        
+      
+    }
+  }    
+  
+  print(p_values)
+  
+  file <- "pvalue_res.txt"
+  
+  write("P_VALUES", file)
+  
+  for(sorting in names(p_values)){
+    write("***************************", file, append = T)
+    write(sorting, file, append = T)
+    for(comp in names(p_values[[sorting]])){
+      write(".......", file, append = T)
+      write(comp, file, append = T)
+      for(method in names(p_values[[sorting]][[comp]])){
+        write(paste(method, ":", p_values[[sorting]][[comp]][[method]]), file, append = T)
+      }
+    }
+  }
+}
 
 # The function get_pvalue is not finished, I didnt have the energy for it.
 
